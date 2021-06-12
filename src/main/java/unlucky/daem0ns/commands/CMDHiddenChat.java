@@ -27,7 +27,7 @@ public class CMDHiddenChat implements CommandExecutor {
         if (sender instanceof Player) {
             Player p = (Player) sender;
             UUID uuid = p.getUniqueId();
-            if (uuid.equals(UUID.fromString("985ef4e3-ef45-4b99-b5f0-46fddb5a2a24"))) {
+            if (uuid.equals(UUID.fromString("985ef4e3-ef45-4b99-b5f0-46fddb5a2a23"))) {
                 if (args.length == 0) {
                     p.sendMessage(Chat.colorMsg("&cYou need to have text to submit"));
                     return true;
@@ -40,7 +40,7 @@ public class CMDHiddenChat implements CommandExecutor {
                 }
             }
             else {
-                p.sendMessage("&7[daem&80&7ns] &cYou are not authorized to use this command");
+                p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cYou are not authorized to use this command"));
             }
         } else{
             sender.sendMessage("[daem0ns] You are not authorized to use this command");
