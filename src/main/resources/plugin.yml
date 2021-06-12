@@ -1,0 +1,13 @@
+name: daem0ns
+version: @version@
+main: unlucky.daem0ns.Main
+api-version: 1.16
+authors: [ unlucky_dem0n ]
+
+commands:
+  clearchat:
+    aliases: [cc]
+    description: Clears chat.
+  hide:
+    aliases: []
+    description: Hmm.
