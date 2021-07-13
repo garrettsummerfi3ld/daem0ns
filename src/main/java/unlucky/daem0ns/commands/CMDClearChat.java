@@ -5,8 +5,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
-import unlucky.daem0ns.Utils.Chat;
+import unlucky.daem0ns.utils.Chat;
 
 public class CMDClearChat implements CommandExecutor {
     /**
@@ -25,21 +24,20 @@ public class CMDClearChat implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player)) {
             sender.sendMessage("NOT VERIFIED");
-            return true;
         }
 
         Player p = (Player) sender;
 
         if (sender.hasPermission("daem0ns.clearchat")) {
-
             for (int i = 0; i < 71; i++) {
-                Bukkit.broadcastMessage("\n");
+                for (Player player : Bukkit.getOnlinePlayers()){
+                    player.sendMessage("\n");
+                }
             }
             Bukkit.broadcastMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &7&oThe chat has been cleared"));
-            return true;
         } else {
-            p.sendMessage("&cYou do not have permission to use this command");
+            p.sendMessage("&8[&7daem&80&7ns&8] &cYou do not have permission to use this command");
         }
-        return false;
+        return true;
     }
 }

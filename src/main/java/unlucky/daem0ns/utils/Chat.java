@@ -1,4 +1,4 @@
-package unlucky.daem0ns.Utils;
+package unlucky.daem0ns.utils;
 
 import org.bukkit.ChatColor;
 

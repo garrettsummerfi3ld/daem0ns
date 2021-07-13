@@ -5,11 +5,14 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.AsyncPlayerChatEvent;
 import unlucky.daem0ns.utils.Chat;
 
-import java.util.UUID;
+public class CMDMuteAll implements CommandExecutor, Listener {
+    public boolean serverMuted = false;
 
-public class CMDHiddenChat implements CommandExecutor {
     /**
      * Executes the given command, returning its success.
      * <br>
@@ -26,23 +29,22 @@ public class CMDHiddenChat implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            UUID uuid = p.getUniqueId();
-            if (uuid.equals(UUID.fromString("985ef4e3-ef45-4b99-b5f0-46fddb5a2a24"))) {
-                if (args.length == 0) {
-                    p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cYou need to have text to submit"));
-                }
-                if (args.length > 0) {
-                    StringBuilder s = new StringBuilder();
-                    for (String arg : args) s.append(arg).append(" ");
-                    Bukkit.broadcastMessage(Chat.colorMsg(s.toString()));
-                }
+
+            if (sender.hasPermission("daem0ns.muteall")) {
+                serverMuted = !serverMuted;
+                Bukkit.broadcastMessage(Chat.colorMsg(serverMuted ? ("&8[&7daem&80&7ns&8] &7&oThe server has been muted by &c" + p.getDisplayName()) : "&8[&7daem&80&7ns&8] &7&oThe server has been unmuted"));
             } else {
                 p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cYou are not authorized to use this command"));
             }
-        } else {
-            sender.sendMessage("[daem0ns] You are not authorized to use this command");
         }
-
         return true;
+    }
+
+    @EventHandler
+    public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
+        if (serverMuted) {
+            e.getPlayer().sendMessage("&8[&7daem&80&7ns&8] &7&oThe server is currently muted, your message did not send");
+            e.setCancelled(true);
+        }
     }
 }
