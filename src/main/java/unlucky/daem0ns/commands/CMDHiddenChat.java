@@ -7,8 +7,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import unlucky.daem0ns.utils.Chat;
 
-import java.util.UUID;
-
 public class CMDHiddenChat implements CommandExecutor {
     /**
      * Executes the given command, returning its success.
@@ -26,8 +24,7 @@ public class CMDHiddenChat implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player) {
             Player p = (Player) sender;
-            UUID uuid = p.getUniqueId();
-            if (uuid.equals(UUID.fromString("985ef4e3-ef45-4b99-b5f0-46fddb5a2a24"))) {
+            if (sender.hasPermission("daem0ns.hide")) {
                 if (args.length == 0) {
                     p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cYou need to have text to submit"));
                 }
@@ -40,7 +37,7 @@ public class CMDHiddenChat implements CommandExecutor {
                 p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cYou are not authorized to use this command"));
             }
         } else {
-            sender.sendMessage("[daem0ns] You are not authorized to use this command");
+            sender.sendMessage("[daem0ns] Only in-game players are allowed to use this command");
         }
 
         return true;

@@ -11,8 +11,10 @@ commands:
     permission: daem0ns.clearchat
     usage: /cc
   hide:
-    aliases: [ ]
-    description: Chat.
+    aliases: [ hc ]
+    description: Broadcasts a message to the server without the username attached.
+    permission: daem0ns.hide
+    usage: /hide
   muteall:
     aliases: [ ]
     description: Mutes the server.
@@ -25,9 +27,17 @@ permissions:
     children:
       daem0ns.clearshat: true
       daem0ns.muteall: true
+      daem0ns.hide: true
+      daem0ns.perfreport: true
   daem0ns.muteall:
     description: Gives permission to mute the whole server
     default: false
   daem0ns.clearchat:
     description: Gives permission to clear the chat
+    default: false
+  daem0ns.hide:
+    description: Gives permission to send an untagged message
+    default: false
+  daem0ns.perfreport:
+    description: Gives permission to see performance reporting from the internal schedulers.
     default: false

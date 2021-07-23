@@ -30,7 +30,7 @@ public class CMDClearChat implements CommandExecutor {
 
         if (sender.hasPermission("daem0ns.clearchat")) {
             for (int i = 0; i < 71; i++) {
-                for (Player player : Bukkit.getOnlinePlayers()){
+                for (Player player : Bukkit.getOnlinePlayers()) {
                     player.sendMessage("\n");
                 }
             }
