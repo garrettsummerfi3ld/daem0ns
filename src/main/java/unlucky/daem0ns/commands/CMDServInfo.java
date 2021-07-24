@@ -1,14 +1,16 @@
 package unlucky.daem0ns.commands;
 
-import org.bukkit.Bukkit;
+import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import unlucky.daem0ns.Main;
-import unlucky.daem0ns.utils.Chat;
 
-public class CMDClearChat implements CommandExecutor {
+public class CMDServInfo implements CommandExecutor {
+
+    private final Server server = Bukkit.getServer();
 
     /**
      * Executes the given command, returning its success.
@@ -24,18 +26,10 @@ public class CMDClearChat implements CommandExecutor {
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Player p = (Player) sender;
-
-        if (sender.hasPermission("daem0ns.clearchat")) {
-            for (int i = 0; i < Main.getInstance().getConfig().getInt("clearchat-line-inserts"); i++) {
-                for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
-                    onlinePlayers.sendMessage("\n");
-                }
-            }
-            Bukkit.broadcastMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &7&oThe chat has been cleared"));
-        } else {
-            p.sendMessage("&8[&7daem&80&7ns&8] &cYou do not have permission to use this command");
+        if (sender instanceof Player){
+            
         }
-        return true;
+
+        return false;
     }
 }
