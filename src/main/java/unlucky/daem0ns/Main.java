@@ -13,6 +13,7 @@ import unlucky.daem0ns.commands.CMDMuteAll;
 import unlucky.daem0ns.utils.TPSReport;
 
 import java.util.Objects;
+import java.util.logging.Level;
 
 public final class Main extends JavaPlugin {
 
@@ -21,7 +22,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getServer().getConsoleSender().sendMessage(ChatColor.RED + "daem0ns is starting...");
+        Bukkit.getLogger().log(Level.INFO,ChatColor.RED + "daem0ns is starting...");
 
         this.saveDefaultConfig();
 
@@ -29,14 +30,14 @@ public final class Main extends JavaPlugin {
         loadListeners();
         loadSchedulers();
 
-        getServer().getConsoleSender().sendMessage(ChatColor.RED + "daem0ns has been enabled.");
+        Bukkit.getLogger().log(Level.INFO,ChatColor.RED + "daem0ns has been enabled.");
     }
 
     private void loadCommands() {
         Objects.requireNonNull(getCommand("hide")).setExecutor(new CMDHiddenChat());
         Objects.requireNonNull(getCommand("clearchat")).setExecutor(new CMDClearChat());
         Objects.requireNonNull(getCommand("muteall")).setExecutor(new CMDMuteAll());
-        Objects.requireNonNull(getCommand("srvinfo")).setExecutor(new CMDServInfo());
+        //Objects.requireNonNull(getCommand("srvinfo")).setExecutor(new CMDServInfo());
     }
 
     private void loadListeners() {
@@ -48,19 +49,21 @@ public final class Main extends JavaPlugin {
         BukkitTask TPSReporter = new TPSReport(this).runTaskTimer(this, 20, 900);
     }
 
-    public Main(){
-        if(Main.instance != null) { //Unnecessary check but ensures your plugin is only initialized once.
+    // Sets instance
+    public Main() {
+        if(Main.instance != null) {
             throw new Error("daem0ns is already initialized!");
         }
-        Main.instance = this; //A plugin's constructor should only be called once
+        Main.instance = this;
     }
 
-    public static Main getInstance(){ //Get's your plugin's instance
+    // Gets instance
+    public static Main getInstance() {
         return instance;
     }
 
     @Override
     public void onDisable() {
-        getServer().getConsoleSender().sendMessage(ChatColor.RED + "daem0ns has been disabled.");
+        Bukkit.getLogger().log(Level.INFO,ChatColor.RED + "daem0ns has been disabled.");
     }
 }
