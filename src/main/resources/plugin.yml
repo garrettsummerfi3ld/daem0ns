@@ -27,6 +27,7 @@ permissions:
     children:
       daem0ns.clearshat: true
       daem0ns.muteall: true
+      daemons.muteall.bypass: true
       daem0ns.hide: true
       daem0ns.perfreport: true
   daem0ns.muteall:
@@ -40,4 +41,7 @@ permissions:
     default: false
   daem0ns.perfreport:
     description: Gives permission to see performance reporting from the internal schedulers.
+    default: false
+  daem0ns.muteall.bypass:
+    description: Gives override permission to chat while server is muted
     default: false

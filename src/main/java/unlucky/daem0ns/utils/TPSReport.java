@@ -7,6 +7,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import unlucky.daem0ns.Main;
 
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class TPSReport extends BukkitRunnable {
@@ -18,6 +19,7 @@ public class TPSReport extends BukkitRunnable {
         this.plugin = plugin;
     }
 
+    private final Logger logger = Main.logger;
     /**
      * When an object implementing interface <code>Runnable</code> is used
      * to create a thread, starting the thread causes the object's
@@ -39,13 +41,13 @@ public class TPSReport extends BukkitRunnable {
                         p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cThe TPS is critically low, check the console for more information."));
                     }
                 }
-                Bukkit.getLogger().log(Level.WARNING, Chat.colorMsg("&8[&7daem&80&7ns&8] &cServer is lagging, running TPS report..."));
+                logger.warning(Chat.colorMsg("&8[&7daem&80&7ns&8] &cServer is lagging, running TPS report..."));
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "tps");
                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "timings report");
                 unstableTPSCheck = true;
             }
         } else {
-            Bukkit.getLogger().log(Level.INFO, Chat.colorMsg("&8[&7daem&80&7ns&8] Server is running normally."));
+            logger.info(Chat.colorMsg("&8[&7daem&80&7ns&8] Server is running normally."));
             unstableTPSCheck = false;
         }
     }

@@ -1,5 +1,6 @@
 package unlucky.daem0ns.commands;
 
+import io.papermc.paper.event.player.AsyncChatEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -7,7 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.AsyncPlayerChatEvent;
 import unlucky.daem0ns.utils.Chat;
 
 public class CMDMuteAll implements CommandExecutor, Listener {
@@ -27,12 +27,10 @@ public class CMDMuteAll implements CommandExecutor, Listener {
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender instanceof Player) {
-            Player p = (Player) sender;
-
+        if (sender instanceof Player p) {
             if (sender.hasPermission("daem0ns.muteall")) {
                 serverMuted = !serverMuted;
-                Bukkit.broadcastMessage(Chat.colorMsg(serverMuted ? ("&8[&7daem&80&7ns&8] &7&oThe server has been muted by &c" + p.getDisplayName()) : "&8[&7daem&80&7ns&8] &7&oThe server has been unmuted"));
+                Bukkit.broadcastMessage(Chat.colorMsg(serverMuted ? ("&8[&7daem&80&7ns&8] &7&oThe server has been muted by &c" + p.displayName()) : "&8[&7daem&80&7ns&8] &7&oThe server has been unmuted"));
             } else {
                 p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cYou are not authorized to use this command"));
             }
@@ -41,10 +39,12 @@ public class CMDMuteAll implements CommandExecutor, Listener {
     }
 
     @EventHandler
-    public void onAsyncPlayerChat(AsyncPlayerChatEvent e) {
+    public void onAsyncPlayerChat(AsyncChatEvent e) {
         if (serverMuted) {
-            e.getPlayer().sendMessage("&8[&7daem&80&7ns&8] &7&oThe server is currently muted, your message did not send");
-            e.setCancelled(true);
+            if (!e.getPlayer().hasPermission("daem0ns.muteall.bypass")){
+                e.getPlayer().sendMessage("&8[&7daem&80&7ns&8] &7&oThe server is currently muted, your message did not send");
+                e.setCancelled(true);
+            }
         }
     }
 }
