@@ -14,15 +14,18 @@ import unlucky.daem0ns.utils.TPSReport;
 
 import java.util.Objects;
 import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin {
 
     FileConfiguration config = getConfig();
     private static Main instance;
 
+    public static final Logger logger = Bukkit.getLogger();
+
     @Override
     public void onEnable() {
-        Bukkit.getLogger().log(Level.INFO,ChatColor.RED + "daem0ns is starting...");
+        logger.info(ChatColor.RED + "daem0ns is starting...");
 
         this.saveDefaultConfig();
 
@@ -30,7 +33,7 @@ public final class Main extends JavaPlugin {
         loadListeners();
         loadSchedulers();
 
-        Bukkit.getLogger().log(Level.INFO,ChatColor.RED + "daem0ns has been enabled.");
+        logger.info(ChatColor.RED + "daem0ns has been enabled.");
     }
 
     private void loadCommands() {
@@ -64,6 +67,6 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        Bukkit.getLogger().log(Level.INFO,ChatColor.RED + "daem0ns has been disabled.");
+        logger.info(ChatColor.RED + "daem0ns has been disabled.");
     }
 }
