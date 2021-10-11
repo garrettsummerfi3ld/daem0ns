@@ -7,10 +7,14 @@
 ###################################################
 
 # How many new lines will be created when you run /clearchat
-clearchat-line-inserts: 71
+# Default: 100
+clearchat-line-inserts: 100
 
 # TPS checker, each value should never be higher than 20, as a server TPS will only go as high as 20
+# Console messages are the normal messages telling the console that the server is running normally. This helps cut down
+# on console spam if left false. If the server is unstable it will still broadcast a message.
 tps:
   1m: 18
   5m: 19
   15m: 19
+  console-messages: false

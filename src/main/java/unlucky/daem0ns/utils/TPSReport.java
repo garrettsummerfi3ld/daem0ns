@@ -45,7 +45,8 @@ public class TPSReport extends BukkitRunnable {
                 unstableTPSCheck = true;
             }
         } else {
-            Bukkit.getLogger().log(Level.INFO, Chat.colorMsg("&8[&7daem&80&7ns&8] Server is running normally."));
+            if (Main.getInstance().getConfig().getBoolean("tps.console-messages"))
+                Bukkit.getLogger().log(Level.INFO, Chat.colorMsg("&8[&7daem&80&7ns&8] Server is running normally."));
             unstableTPSCheck = false;
         }
     }
