@@ -1,5 +1,5 @@
 name: daem0ns
-version: @version@
+version: 0.2
 main: unlucky.daem0ns.Main
 api-version: 1.16
 authors: [ unlucky_dem0n ]
