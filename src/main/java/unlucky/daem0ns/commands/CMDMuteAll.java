@@ -11,7 +11,7 @@ import org.bukkit.event.Listener;
 import unlucky.daem0ns.utils.Chat;
 
 public class CMDMuteAll implements CommandExecutor, Listener {
-    public boolean serverMuted = false;
+    public static boolean serverMuted = false;
 
     /**
      * Executes the given command, returning its success.
@@ -30,21 +30,19 @@ public class CMDMuteAll implements CommandExecutor, Listener {
         if (sender instanceof Player p) {
             if (sender.hasPermission("daem0ns.muteall")) {
                 serverMuted = !serverMuted;
-                Bukkit.broadcastMessage(Chat.colorMsg(serverMuted ? ("&8[&7daem&80&7ns&8] &7&oThe server has been muted by &c" + p.displayName()) : "&8[&7daem&80&7ns&8] &7&oThe server has been unmuted"));
+                Bukkit.broadcastMessage(Chat.colorMsg(serverMuted ? ("&8[&7daem&80&7ns&8] &7&oThe server has been muted by &c" + p.getPlayer().getName()) : "&8[&7daem&80&7ns&8] &7&oThe server has been unmuted"));
             } else {
                 p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cYou are not authorized to use this command"));
             }
         }
+        else {
+            serverMuted = !serverMuted;
+            Bukkit.broadcastMessage(Chat.colorMsg(serverMuted ? ("&8[&7daem&80&7ns&8] &7&oThe server has been muted by &cCONSOLE") : "&8[&7daem&80&7ns&8] &7&oThe server has been unmuted"));
+        }
         return true;
     }
 
-    @EventHandler
-    public void onAsyncPlayerChat(AsyncChatEvent e) {
-        if (serverMuted) {
-            if (!e.getPlayer().hasPermission("daem0ns.muteall.bypass")){
-                e.getPlayer().sendMessage("&8[&7daem&80&7ns&8] &7&oThe server is currently muted, your message did not send");
-                e.setCancelled(true);
-            }
-        }
+    public static boolean getServerMuteState(){
+        return serverMuted;
     }
 }
