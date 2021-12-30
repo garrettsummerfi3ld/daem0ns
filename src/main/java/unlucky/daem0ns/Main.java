@@ -40,7 +40,6 @@ public final class Main extends JavaPlugin {
         Objects.requireNonNull(getCommand("hide")).setExecutor(new CMDHiddenChat());
         Objects.requireNonNull(getCommand("clearchat")).setExecutor(new CMDClearChat());
         Objects.requireNonNull(getCommand("muteall")).setExecutor(new CMDMuteAll());
-        //Objects.requireNonNull(getCommand("srvinfo")).setExecutor(new CMDServInfo());
     }
 
     private void loadListeners() {
