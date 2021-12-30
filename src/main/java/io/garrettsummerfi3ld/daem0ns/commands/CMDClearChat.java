@@ -1,12 +1,12 @@
-package unlucky.daem0ns.commands;
+package io.garrettsummerfi3ld.daem0ns.commands;
 
+import io.garrettsummerfi3ld.daem0ns.utils.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import unlucky.daem0ns.Main;
-import unlucky.daem0ns.utils.Chat;
+import io.garrettsummerfi3ld.daem0ns.Main;
 
 public class CMDClearChat implements CommandExecutor {
 

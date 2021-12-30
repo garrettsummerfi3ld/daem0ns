@@ -1,10 +1,10 @@
-package unlucky.daem0ns.listeners;
+package io.garrettsummerfi3ld.daem0ns.listeners;
 
+import io.garrettsummerfi3ld.daem0ns.utils.Chat;
 import io.papermc.paper.event.player.AsyncChatEvent;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import unlucky.daem0ns.commands.CMDMuteAll;
-import unlucky.daem0ns.utils.Chat;
+import io.garrettsummerfi3ld.daem0ns.commands.CMDMuteAll;
 
 public class MuteAllListener implements Listener {
 

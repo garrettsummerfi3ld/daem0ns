@@ -1,10 +1,10 @@
-package unlucky.daem0ns.utils;
+package io.garrettsummerfi3ld.daem0ns.utils;
 
+import io.garrettsummerfi3ld.daem0ns.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
-import unlucky.daem0ns.Main;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;

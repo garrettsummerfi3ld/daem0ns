@@ -1,6 +1,6 @@
 name: daem0ns
 version: 0.2
-main: unlucky.daem0ns.Main
+main: io.garrettsummerfi3ld.daem0ns.Main
 api-version: 1.17
 authors: [ unlucky_dem0n ]
 

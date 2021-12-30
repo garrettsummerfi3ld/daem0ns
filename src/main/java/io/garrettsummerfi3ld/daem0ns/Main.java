@@ -1,19 +1,17 @@
-package unlucky.daem0ns;
+package io.garrettsummerfi3ld.daem0ns;
 
+import io.garrettsummerfi3ld.daem0ns.commands.CMDClearChat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitTask;
-import unlucky.daem0ns.commands.CMDClearChat;
-import unlucky.daem0ns.commands.CMDHiddenChat;
-import unlucky.daem0ns.commands.CMDServInfo;
-import unlucky.daem0ns.commands.CMDMuteAll;
-import unlucky.daem0ns.listeners.MuteAllListener;
-import unlucky.daem0ns.utils.TPSReport;
+import io.garrettsummerfi3ld.daem0ns.commands.CMDHiddenChat;
+import io.garrettsummerfi3ld.daem0ns.commands.CMDMuteAll;
+import io.garrettsummerfi3ld.daem0ns.listeners.MuteAllListener;
+import io.garrettsummerfi3ld.daem0ns.utils.TPSReport;
 
 import java.util.Objects;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin {

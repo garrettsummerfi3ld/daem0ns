@@ -1,4 +1,4 @@
-package unlucky.daem0ns.commands;
+package io.garrettsummerfi3ld.daem0ns.commands;
 
 import org.bukkit.Server;
 import org.bukkit.command.Command;
@@ -6,7 +6,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
-import unlucky.daem0ns.Main;
 
 public class CMDServInfo implements CommandExecutor {
 

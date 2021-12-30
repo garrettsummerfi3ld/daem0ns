@@ -1,14 +1,12 @@
-package unlucky.daem0ns.commands;
+package io.garrettsummerfi3ld.daem0ns.commands;
 
-import io.papermc.paper.event.player.AsyncChatEvent;
+import io.garrettsummerfi3ld.daem0ns.utils.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import unlucky.daem0ns.utils.Chat;
 
 public class CMDMuteAll implements CommandExecutor, Listener {
     public static boolean serverMuted = false;
