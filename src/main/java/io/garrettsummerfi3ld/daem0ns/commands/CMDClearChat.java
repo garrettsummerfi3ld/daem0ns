@@ -1,14 +1,26 @@
 package io.garrettsummerfi3ld.daem0ns.commands;
 
+import io.garrettsummerfi3ld.daem0ns.Main;
 import io.garrettsummerfi3ld.daem0ns.utils.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import io.garrettsummerfi3ld.daem0ns.Main;
 
 public class CMDClearChat implements CommandExecutor {
+
+    /**
+     * Clears chat with the amount specified in the configuration file
+     */
+    public void clearChat() {
+        for (int i = 0; i < Main.getInstance().getConfig().getInt("clearchat-line-inserts"); i++) {
+            for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
+                onlinePlayers.sendMessage("\n");
+            }
+        }
+        Bukkit.broadcastMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &7&oThe chat has been cleared"));
+    }
 
     /**
      * Executes the given command, returning its success.
@@ -24,18 +36,16 @@ public class CMDClearChat implements CommandExecutor {
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        Player p = (Player) sender;
-
-        if (sender.hasPermission("daem0ns.clearchat")) {
-            for (int i = 0; i < Main.getInstance().getConfig().getInt("clearchat-line-inserts"); i++) {
-                for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
-                    onlinePlayers.sendMessage("\n");
-                }
+        if (sender instanceof Player p) {
+            if (sender.hasPermission("daem0ns.clearchat")) {
+                clearChat();
+            } else {
+                p.sendMessage("&8[&7daem&80&7ns&8] &cYou do not have permission to use this command");
             }
-            Bukkit.broadcastMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &7&oThe chat has been cleared"));
         } else {
-            p.sendMessage("&8[&7daem&80&7ns&8] &cYou do not have permission to use this command");
+            clearChat();
         }
+
         return true;
     }
 }

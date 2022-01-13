@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-group = 'unlucky'
+group = 'io.garrettsummerfi3ld'
 version = '1.0-SNAPSHOT'
 
 sourceCompatibility = JavaVersion.VERSION_16

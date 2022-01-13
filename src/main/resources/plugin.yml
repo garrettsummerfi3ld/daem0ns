@@ -23,6 +23,7 @@ commands:
 
 permissions:
   daem0ns.*:
+    default: op
     description: Gives all daem0ns permissions and commands
     children:
       daem0ns.clearshat: true
@@ -32,16 +33,16 @@ permissions:
       daem0ns.perfreport: true
   daem0ns.muteall:
     description: Gives permission to mute the whole server
-    default: false
+    default: op
+    daem0ns.muteall.bypass:
+      description: Gives override permission to chat while server is muted
+      default: op
   daem0ns.clearchat:
     description: Gives permission to clear the chat
-    default: false
+    default: op
   daem0ns.hide:
     description: Gives permission to send an untagged message
     default: false
   daem0ns.perfreport:
     description: Gives permission to see performance reporting from the internal schedulers.
-    default: false
-  daem0ns.muteall.bypass:
-    description: Gives override permission to chat while server is muted
-    default: false
+    default: op
