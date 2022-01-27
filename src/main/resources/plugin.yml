@@ -3,23 +3,27 @@ version: 0.2
 main: io.garrettsummerfi3ld.daem0ns.Main
 api-version: 1.17
 authors: [ unlucky_dem0n ]
+depend:
+  - spark
 
 commands:
   clearchat:
     aliases: [ cc ]
     description: Clears chat.
     permission: daem0ns.clearchat
-    usage: /cc
+    usage: /clearchat
   hide:
     aliases: [ hc ]
     description: Broadcasts a message to the server without the username attached.
     permission: daem0ns.hide
-    usage: /hide
+    usage: /hide [message]
   muteall:
     aliases: [ ]
     description: Mutes the server.
     permission: daem0ns.muteall
     usage: /muteall
+  serverinfo:
+    description: Gets server information
 
 permissions:
   daem0ns.*:

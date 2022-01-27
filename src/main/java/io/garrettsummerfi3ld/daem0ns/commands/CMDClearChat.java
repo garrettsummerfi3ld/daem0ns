@@ -10,11 +10,13 @@ import org.bukkit.entity.Player;
 
 public class CMDClearChat implements CommandExecutor {
 
+    private static final Main main = Main.getInstance();
+
     /**
      * Clears chat with the amount specified in the configuration file
      */
     public void clearChat() {
-        for (int i = 0; i < Main.getInstance().getConfig().getInt("clearchat-line-inserts"); i++) {
+        for (int i = 0; i < main.getConfig().getInt("clearchat-line-inserts"); i++) {
             for (Player onlinePlayers : Bukkit.getOnlinePlayers()) {
                 onlinePlayers.sendMessage("\n");
             }

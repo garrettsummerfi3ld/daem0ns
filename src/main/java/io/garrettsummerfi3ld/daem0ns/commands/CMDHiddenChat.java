@@ -1,8 +1,6 @@
 package io.garrettsummerfi3ld.daem0ns.commands;
 
 import io.garrettsummerfi3ld.daem0ns.utils.Chat;
-import net.kyori.adventure.text.TextComponent;
-import net.md_5.bungee.api.chat.BaseComponent;
 import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -48,7 +46,7 @@ public class CMDHiddenChat implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player p) {
-            if (sender.hasPermission("daem0ns.hide")) {
+            if (p.hasPermission("daem0ns.hide")) {
                 if (checkArgs(args)) {
                     sendHiddenMessage(args);
                 }

@@ -11,10 +11,20 @@ import org.bukkit.event.Listener;
 public class CMDMuteAll implements CommandExecutor, Listener {
     public static boolean serverMuted = false;
 
+    /**
+     * Gets global server mute state
+     *
+     * @return server mute state, which is either true or false
+     */
     public static boolean getServerMuteState() {
         return serverMuted;
     }
 
+    /**
+     * Sets server mute states
+     *
+     * @param muteState server mute state to set, which is either true or false
+     */
     public static void setServerMuteState(boolean muteState) {
         serverMuted = muteState;
     }

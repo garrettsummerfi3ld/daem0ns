@@ -1,10 +1,14 @@
 package io.garrettsummerfi3ld.daem0ns.commands;
 
+import io.garrettsummerfi3ld.daem0ns.utils.Chat;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+
+import java.util.Arrays;
 
 public class CMDServInfo implements CommandExecutor {
 
@@ -24,8 +28,21 @@ public class CMDServInfo implements CommandExecutor {
      */
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (sender.hasPermission("daem0ns.serverinfo")) {
-
+        if (sender instanceof Player p){
+            if (p.hasPermission("daem0ns.serverinfo")) {
+                String name = server.getName();
+                String version = server.getVersion();
+                String bukkitVersion = server.getBukkitVersion();
+                String plugins = Arrays.toString(server.getPluginManager().getPlugins());
+                p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &7Server Information"));
+                p.sendMessage(Chat.colorMsg("Name: ").concat(name));
+                p.sendMessage(Chat.colorMsg("Version: ").concat(version));
+                p.sendMessage(Chat.colorMsg("Bukkit Version: ").concat(bukkitVersion));
+                p.sendMessage(Chat.colorMsg("Plugins: ").concat(plugins));
+            }
+            else{
+                p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cYou are not authorized to use this command"));
+            }
         }
         return true;
     }

@@ -14,7 +14,8 @@ clearchat-line-inserts: 100
 # Console messages are the normal messages telling the console that the server is running normally. This helps cut down
 # on console spam if left false. If the server is unstable it will still broadcast a message.
 tps:
-  1m: 18
+  5s: 19.5
+  1m: 19
   5m: 19
   15m: 19
   console-messages: false
