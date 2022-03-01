@@ -1,11 +1,11 @@
 package io.garrettsummerfi3ld.daem0ns.commands;
 
 import io.garrettsummerfi3ld.daem0ns.utils.Chat;
+import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.Arrays;

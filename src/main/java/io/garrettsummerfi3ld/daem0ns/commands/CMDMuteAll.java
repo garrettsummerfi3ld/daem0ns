@@ -8,6 +8,8 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 
+import java.util.Objects;
+
 public class CMDMuteAll implements CommandExecutor, Listener {
     public static boolean serverMuted = false;
 
@@ -46,7 +48,7 @@ public class CMDMuteAll implements CommandExecutor, Listener {
         if (sender instanceof Player p) {
             if (sender.hasPermission("daem0ns.muteall")) {
                 setServerMuteState(!serverMuted);
-                Bukkit.broadcastMessage(Chat.colorMsg(serverMuted ? ("&8[&7daem&80&7ns&8] &7&oThe server has been muted by &c" + p.getPlayer().getName()) : "&8[&7daem&80&7ns&8] &7&oThe server has been unmuted"));
+                Bukkit.broadcastMessage(Chat.colorMsg(serverMuted ? ("&8[&7daem&80&7ns&8] &7&oThe server has been muted by &c" + Objects.requireNonNull(p.getPlayer()).getName()) : "&8[&7daem&80&7ns&8] &7&oThe server has been unmuted"));
             } else {
                 p.sendMessage(Chat.colorMsg("&8[&7daem&80&7ns&8] &cYou are not authorized to use this command"));
             }
