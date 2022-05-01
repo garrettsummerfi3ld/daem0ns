@@ -19,3 +19,12 @@ tps:
   5m: 19
   15m: 19
   console-messages: false
+
+# OpTool configuration, if enabled this will enable the usage of OpTool.
+# There can also be a database attached to it if you want to log who ran commands to op or deop
+# players
+optool: true
+  use-db: false
+  user: ""
+  pass: ""
+  url: ""

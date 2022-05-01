@@ -5,6 +5,7 @@ import io.garrettsummerfi3ld.daem0ns.commands.CMDHiddenChat;
 import io.garrettsummerfi3ld.daem0ns.commands.CMDMuteAll;
 import io.garrettsummerfi3ld.daem0ns.commands.CMDServInfo;
 import io.garrettsummerfi3ld.daem0ns.listeners.MuteAllListener;
+import io.garrettsummerfi3ld.daem0ns.utils.DatabaseHandler;
 import io.garrettsummerfi3ld.daem0ns.utils.TPSReport;
 import me.lucko.spark.api.Spark;
 import org.bukkit.Bukkit;
@@ -56,6 +57,9 @@ public final class Main extends JavaPlugin {
         loadListeners();
         loadSchedulers();
 
+        if (config.getBoolean("optool.use-db")) {
+            DatabaseHandler.databaseConnect();
+        }
         log.info("daem0ns has been enabled.");
     }
 
@@ -79,6 +83,7 @@ public final class Main extends JavaPlugin {
 
     @Override
     public void onDisable() {
+        DatabaseHandler.databaseDisconnect();
         log.info("daem0ns has been disabled.");
     }
 }

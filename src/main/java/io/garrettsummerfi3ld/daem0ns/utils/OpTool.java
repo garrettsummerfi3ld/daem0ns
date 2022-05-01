@@ -17,7 +17,7 @@ public class OpTool {
     /**
      * Removes a user from the operator permission
      *
-     * @param p
+     * @param p Player
      */
     public static void delOpUser(Player p) {
         p.setOp(false);
